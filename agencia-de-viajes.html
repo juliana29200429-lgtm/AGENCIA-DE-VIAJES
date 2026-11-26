@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vuela Sin Límites Travel | LATAM Partner - Destino Pasto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --latam-indigo: #1B0088;
+      --latam-indigo-dark: #100054;
+      --latam-indigo-light: #2E0EC4;
+      --latam-coral: #E8114B;
+      --latam-coral-hover: #C80B3E;
+      --latam-sky: #00A8E8;
+      --bg-surface: #F4F5F9;
+      --card-bg: #FFFFFF;
+      --text-main: #181824;
+      --text-muted: #5A5D72;
+      --border-color: #E0E3EE;
+      --success: #0D9488;
+      --gold: #D97706;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      background: linear-gradient(135deg, var(--latam-indigo-dark) 0%, var(--latam-indigo) 65%, var(--latam-indigo-light) 100%);
+      color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(27, 0, 136, 0.25);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      background: var(--latam-coral);
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 12px rgba(232, 17, 75, 0.4);
+    }
+
+    .brand-title h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title span {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #C7D2FE;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .latam-badge {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.22);
+      padding: 5px;
+      border-radius: 12px;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: #E0E7FF;
+      padding: 0.6rem 1.1rem;
+      border-radius: 9px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .nav-btn.active {
+      background: var(--latam-coral);
+      color: #fff;
+      box-shadow: 0 3px 10px rgba(232, 17, 75, 0.4);
+    }
+
+    .badge-count {
+      background: white;
+      color: var(--latam-indigo);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: 999px;
+    }
+
+    /* HERO FLIGHT BANNER */
+    .flight-banner {
+      background: var(--latam-indigo-dark);
+      color: white;
+      border-bottom: 4px solid var(--latam-coral);
+      padding: 1.75rem 2rem;
+    }
+
+    .flight-banner-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .route-display {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .iata-box {
+      text-align: center;
+    }
+
+    .iata-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .iata-city {
+      font-size: 0.78rem;
+      color: #A5B4FC;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .flight-path {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 150px;
+    }
+
+    .flight-line {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--latam-coral);
+    }
+
+    .flight-line::before,
+    .flight-line::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      border-top: 2px dashed rgba(255, 255, 255, 0.35);
+    }
+
+    .flight-meta {
+      font-size: 0.75rem;
+      color: #CBD5E1;
+      margin-top: 4px;
+    }
+
+    .promo-pill {
+      background: linear-gradient(90deg, rgba(232,17,75,0.2), rgba(232,17,75,0.05));
+      border: 1px solid var(--latam-coral);
+      padding: 0.75rem 1.2rem;
+      border-radius: 12px;
+      max-width: 460px;
+      font-size: 0.88rem;
+    }
+
+    .promo-pill strong {
+      color: #FF6B93;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* MAIN CONTAINER */
+    main {
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      margin-bottom: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--latam-indigo);
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* PACKAGES GRID */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pkg-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(27, 0, 136, 0.1);
+    }
+
+    .pkg-card.featured {
+      border: 2px solid var(--latam-indigo);
+    }
+
+    .pkg-ribbon {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--latam-coral);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    .pkg-header {
+      background: linear-gradient(135deg, var(--latam-indigo), var(--latam-indigo-light));
+      color: white;
+      padding: 1.5rem;
+    }
+
+    .pkg-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #C7D2FE;
+      font-weight: 700;
+    }
+
+    .pkg-header h3 {
+      font-size: 1.25rem;
+      margin: 0.25rem 0 0.75rem;
+      font-weight: 800;
+    }
+
+    .pkg-price {
+      font-size: 1.85rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .pkg-sub {
+      font-size: 0.82rem;
+      color: #E0E7FF;
+      margin-top: 2px;
+    }
+
+    .pkg-body {
+      padding: 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pkg-list {
+      list-style: none;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .pkg-list li {
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .pkg-list li.inc::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 800;
+    }
+
+    .pkg-list li.exc {
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    .pkg-list li.exc::before {
+      content: "✕";
+      color: var(--latam-coral);
+      font-weight: 700;
+    }
+
+    .pkg-note {
+      background: #F8FAFC;
+      border-left: 3px solid var(--latam-indigo);
+      padding: 0.65rem 0.8rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .pkg-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      padding: 0.72rem 1rem;
+      border-radius: 10px;
+      border: none;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--latam-indigo);
+      color: var(--latam-indigo);
+    }
+
+    .btn-outline:hover {
+      background: #EEF2FF;
+    }
+
+    .btn-primary {
+      background: var(--latam-coral);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--latam-coral-hover);
+    }
+
+    .btn-indigo {
+      background: var(--latam-indigo);
+      color: white;
+    }
+
+    .btn-indigo:hover {
+      background: var(--latam-indigo-dark);
+    }
+
+    /* COMPARISON TABLE */
+    .compare-box {
+      margin-top: 2.5rem;
+      background: white;
+      border-radius: 18px;
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+
+    .compare-box h3 {
+      color: var(--latam-indigo);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 720px;
+    }
+
+    th, td {
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: #F1F5F9;
+      color: var(--latam-indigo);
+      font-weight: 700;
+    }
+
+    /* SALES SIMULATOR LAYOUT */
+    .sim-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .sim-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      background: white;
+      border-radius: 18px;
+      border: 1px solid var(--border-color);
+      padding: 1.6rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .panel-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--latam-indigo);
+      margin-bottom: 1.1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    input, select {
+      padding: 0.7rem 0.85rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--latam-indigo);
+    }
+
+    .passengers-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .passenger-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr auto;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+      align-items: center;
+    }
+
+    .btn-remove {
+      background: #FEE2E2;
+      color: #DC2626;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .alert-box {
+      background: #FEF3C7;
+      border: 1px solid #F59E0B;
+      color: #92400E;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    /* PROMO FREE TRIP CARD */
+    .free-promo-box {
+      background: linear-gradient(135deg, #1B0088 0%, #3110B5 100%);
+      color: white;
+      border-radius: 14px;
+      padding: 1.2rem;
+      margin: 1.2rem 0;
+      border: 2px dashed #FF6B93;
+    }
+
+    .free-promo-box h4 {
+      font-size: 1rem;
+      color: #FF85A6;
+      margin-bottom: 0.35rem;
+    }
+
+    .free-promo-box p {
+      font-size: 0.84rem;
+      color: #E0E7FF;
+      margin-bottom: 0.85rem;
+    }
+
+    .promo-link-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .promo-link-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 0.82rem;
+      padding: 0.55rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    .promo-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 0.85rem;
+      background: rgba(232, 17, 75, 0.25);
+      padding: 0.65rem 0.85rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .promo-toggle input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--latam-coral);
+    }
+
+    /* SUMMARY & COSTS BREAKDOWN */
+    .breakdown-list {
+      list-style: none;
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+    }
+
+    .breakdown-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .total-box {
+      background: #F1F5F9;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--latam-indigo);
+    }
+
+    .total-free {
+      color: var(--success);
+      font-size: 1.35rem;
+    }
+
+    .strike-price {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-right: 8px;
+    }
+
+    /* MODAL & BOARDING PASS */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(16, 0, 84, 0.72);
+      backdrop-filter: blur(4px);
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      z-index: 200;
+      overflow-y: auto;
+    }
+
+    .modal-backdrop.open {
+      display: grid;
+    }
+
+    .modal-card {
+      background: white;
+      border-radius: 20px;
+      max-width: 780px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-head {
+      background: var(--latam-indigo);
+      color: white;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .close-modal {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+      max-height: 82vh;
+      overflow-y: auto;
+    }
+
+    /* BOARDING PASS TICKET DESIGN */
+    .boarding-pass {
+      border: 2px solid var(--latam-indigo);
+      border-radius: 16px;
+      overflow: hidden;
+      background: white;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .bp-top {
+      background: linear-gradient(90deg, var(--latam-indigo-dark), var(--latam-indigo));
+      color: white;
+      padding: 1rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid var(--latam-coral);
+    }
+
+    .bp-airline {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .bp-class {
+      background: var(--latam-coral);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .bp-body {
+      padding: 1.4rem;
+    }
+
+    .bp-route {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #F8FAFC;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bp-city h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.85rem;
+      color: var(--latam-indigo);
+    }
+
+    .bp-city span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .bp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .bp-field label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .bp-field span {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    .bp-pax-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.2rem;
+      font-size: 0.85rem;
+    }
+
+    .bp-pax-table th {
+      background: #EEF2FF;
+      color: var(--latam-indigo);
+      padding: 0.5rem 0.75rem;
+    }
+
+    .bp-pax-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .bp-tear {
+      border-top: 2px dashed #CBD5E1;
+      padding-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .barcode {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
+      background: repeating-linear-gradient(
+        90deg,
+        #181824 0px,
+        #181824 2px,
+        transparent 2px,
+        transparent 5px,
+        #181824 5px,
+        #181824 8px,
+        transparent 8px,
+        transparent 10px
+      );
+      height: 42px;
+      width: 210px;
+    }
+
+    /* HISTORY CARDS */
+    .history-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .history-card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .history-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .pnr-badge {
+      font-family: 'JetBrains Mono', monospace;
+      background: #EEF2FF;
+      color: var(--latam-indigo);
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .free-tag {
+      background: #CCFBF1;
+      color: #0F766E;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printable-ticket-area, #printable-ticket-area * {
+        visibility: visible;
+      }
+      #printable-ticket-area {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-icon">✈️</div>
+        <div class="brand-title">
+          <h1>Vuela Sin Límites Travel</h1>
+          <span>Operado con <span class="latam-badge">LATAM AIRLINES</span> • 1AN •</span>
+        </div>
+      </div>
+
+      <nav class="nav-tabs">
+        <button class="nav-btn active" onclick="switchTab('catalogo', this)">🌍 Catálogo Nariño</button>
+        <button class="nav-btn" onclick="switchTab('simulador', this)">🎫 Simulador y Cierre</button>
+        <button class="nav-btn" onclick="switchTab('historial', this)">
+          📋 Historial Boarding Pass <span class="badge-count" id="history-counter">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="flight-banner">
+    <div class="flight-banner-inner">
+      <div class="route-display">
+        <div class="iata-box">
+          <div class="iata-code">BOG</div>
+          <div class="iata-city">Bogotá D.C.</div>
+        </div>
+        <div class="flight-path">
+          <div class="flight-line">✈️</div>
+          <div class="flight-meta">Vuelo LA 4286</div>
+        </div>
+        <div class="iata-box">
+          <div class="iata-code">PSO</div>
+          <div class="iata-city">Pasto · Nariño</div>
+        </div>
+      </div>
+
+      <div class="promo-pill">
+        <strong>🎁 BENEFICIO ESPECIAL DE CIERRE INMEDIATO</strong>
+        Presenta el plan completo al cliente y activa el enlace promocional: si decide viajar <b>justo ahora</b>, ¡todo el paquete turístico queda <b>100% GRATIS ($0 COP)</b>!
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- SECCIÓN 1: CATÁLOGO DE PAQUETES -->
+    <section id="view-catalogo" class="view-section active">
+      <div class="section-header">
+        <div>
+          <h2>Catálogo de Paquetes Turísticos – Nariño</h2>
+          <p>Selecciona un paquete para mostrar al cliente cada destino, hotel, alimentación, transporte y costos detallados.</p>
+        </div>
+      </div>
+
+      <div class="packages-grid" id="packages-container"></div>
+
+      
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: SIMULADOR MULTI-CLIENTE Y CIERRE DE VENTA -->
+    <section id="view-simulador" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2>Simulador de Asesoría, Cierre de Venta y Boarding Pass</h2>
+          <p>Registra al asesor, los viajeros (nombre y cédula), explica todo lo incluido y genera el ticket de vuelo.</p>
+        </div>
+      </div>
+
+      <div class="sim-layout">
+        <!-- FORMULARIO DE CLIENTES -->
+        <div class="panel">
+          <div class="panel-title">
+            <span>🧑‍💼 1. Datos de la Asesoría y Viajeros</span>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="advisor-name">Asesor de la Agencia</label>
+              <input type="text" id="advisor-name" placeholder="Ej: - / Carlos Ruiz" value="-" />
+            </div>
+
+            <div class="form-group">
+              <label for="flight-date">Fecha de Vuelo (BOG ➔ PSO)</label>
+              <input type="date" id="flight-date" />
+            </div>
+
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label for="package-select">Paquete Turístico Seleccionado</label>
+              <select id="package-select" onchange="updateSimulatorSummary()">
+                <option value="premium">1. Paquete Premium – Nariño VIP ($2.450.000 / persona · 4D/3N)</option>
+                <option value="aventura">2. Paquete Aventura – Descubre Nariño ($1.650.000 / persona · 3D/2N)</option>
+                <option value="economico">3. Paquete Económico – Conoce Pasto ($1.150.000 / persona · 3D/2N)</option>
+                <option value="familiar">4. Paquete Familiar – Nariño en Familia ($1.850.000 / persona · Mín. 4 viajeros)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="alert-box" id="family-warning">
+            ⚠️ <strong>Regla del Paquete Familiar:</strong> Este paquete requiere un <b>mínimo de 4 viajeros</b>. Agrega más pasajeros para poder cerrar la venta.
+          </div>
+
+          <div class="passengers-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+              <label style="font-size:0.92rem; color:var(--latam-indigo);">🛂 Pasajeros que van a volar (<span id="pax-count">1</span>)</label>
+              <button type="button" class="btn btn-indigo" style="padding:0.45rem 0.85rem; font-size:0.8rem;" onclick="addPassengerRow()">+ Agregar Viajero</button>
+            </div>
+            <div id="passengers-list"></div>
+          </div>
+
+          <!-- ENLACE PROMOCIONAL VIAJE GRATIS -->
+          <div class="free-promo-box">
+            <h4>🔗 Enlace Exclusivo: ¡Viaja Justo Ahora 100% GRATIS!</h4>
+            <p>Si el cliente entra a tu enlace oficial y confirma que está dispuesto a tomar el vuelo de inmediato, todo el plan turístico seleccionado queda totalmente gratis.</p>
+            <div class="promo-link-row">
+              <input type="text" id="custom-promo-link" class="promo-link-input" value="https://juliana29200429-lgtm.github.io/PREMIO/" />
+              <button type="button" class="btn btn-primary" style="padding:0.55rem 0.9rem; font-size:0.8rem;" onclick="copyPromoLink()">📋 Copiar Link</button>
+            </div>
+            <label class="promo-toggle">
+              <input type="checkbox" id="apply-free-promo" onchange="updateSimulatorSummary()" />
+              <span>✨ El cliente ingresó al link y aceptó viajar JUSTO AHORA (Aplicar 100% GRATIS)</span>
+            </label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width:100%; padding:1rem; font-size:1rem;" onclick="generateSaleAndTicket()">
+            🛫 Cerrar Venta y Emitir Boarding Pass LATAM
+          </button>
+        </div>
+
+        <!-- RESUMEN DE COTIZACIÓN Y LO QUE INCLUYE -->
+        <div class="panel">
+          <div class="panel-title">
+            <span>📑 2. Desglose Completo para el Cliente</span>
+          </div>
+
+          <div id="live-package-details"></div>
+
+          <div class="total-box">
+            <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:4px;">Liquidación Total del Plan</div>
+            <div class="total-row" id="total-price-display"></div>
+            <div id="promo-status-note" style="font-size:0.8rem; color:var(--success); font-weight:700; margin-top:6px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: HISTORIAL DE VENTAS Y BOARDING PASS -->
+    <section id="view-historial" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2>Historial de Ventas y Boarding Pass Emitidos</h2>
+          <p>Consulta cualquier reserva realizada anteriormente, revisa los pasajeros y vuelve a imprimir su ticket de vuelo.</p>
+        </div>
+        <button class="btn btn-outline" onclick="clearHistory()">🗑️ Limpiar Historial</button>
+      </div>
+
+      <div id="history-container" class="history-grid"></div>
+    </section>
+  </main>
+
+  <!-- MODAL DETALLE DE PAQUETE (DESTINOS, HOTEL, COMIDA, TRANSPORTE) -->
+  <div class="modal-backdrop" id="package-modal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="modal-pkg-title">Detalle Completo del Paquete</h3>
+        <button class="close-modal" onclick="closeModal('package-modal')">✕</button>
+      </div>
+      <div class="modal-body" id="modal-pkg-body"></div>
+    </div>
+  </div>
+
+  <!-- MODAL BOARDING PASS IMPRIMIBLE -->
+  <div class="modal-backdrop" id="ticket-modal">
+    <div class="modal-card">
+      <div class="modal-head no-print">
+        <h3>🎫 Boarding Pass Oficial – Vuela Sin Límites / LATAM</h3>
+        <button class="close-modal" onclick="closeModal('ticket-modal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="printable-ticket-area"></div>
+        <div class="no-print" style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1.25rem;">
+          <button class="btn btn-outline" onclick="closeModal('ticket-modal')">Cerrar</button>
+          <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir Ticket / Boarding Pass</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // BASE DE DATOS DE LOS 4 PAQUETES
+    const PACKAGES = {
+      premium: {
+        id: 'premium',
+        number: '1',
+        name: 'Paquete Premium – Nariño VIP',
+        badge: 'Todo Incluido',
+        featured: true,
+        price: 2450000,
+        duration: '4 días / 3 noches',
+        minPax: 1,
+        flightCode: 'LA 4286',
+        cabin: 'PREMIUM ECONOMY',
+        idealFor: 'Ideal para quienes quieren despreocuparse de toda la organización.',
+        includes: [
+          'Vuelos ida y regreso con LATAM Airlines (BOG – PSO – BOG).',
+          'Hotel 4 estrellas en Pasto (Hotel V1501 o Cuéllar’s Ejecutivo).',
+          'Desayuno, almuerzo y cena incluidos todos los días.',
+          'Transporte privado puerta a puerta durante todo el viaje.',
+          'Excursiones guiadas a la Laguna de La Cocha y Santuario de Las Lajas.',
+          'Guía turístico profesional acompañante.',
+          'Seguro de viaje con cobertura médica total.',
+          'Equipaje de mano (10 kg) + artículo personal.'
+        ],
+        excludes: [
+          'Gastos personales o souvenirs no especificados.'
+        ],
+        fullDetails: {
+          destinos: 'San Juan de Pasto, Laguna de La Cocha (El Encano - Reserva Natural) y Santuario Nacional de Nuestra Señora de Las Lajas en Ipiales.',
+          hospedaje: '3 noches en Hotel 4 estrellas superior en zona exclusiva de Pasto, habitación con Wi-Fi, agua caliente y vista panorámica.',
+          alimentacion: 'Pensión completa: 3 desayunos tipo buffet, 4 almuerzos típicos nariñenses (incluye opción de trucha arcoíris en La Cocha) y 3 cenas a la carta.',
+          transporte: 'Tiquetes aéreos LATAM + camioneta privada climatizada exclusiva para el grupo en todos los traslados y tours.',
+          itinerario: [
+            'Día 1: Vuelo LATAM Bogotá – Pasto, recepción VIP en aeropuerto Antonio Nariño, traslado al hotel 4★ y cena de bienvenida.',
+            'Día 2: Excursión día completo a la Laguna de La Cocha, paseo en lancha a la Isla La Corota y almuerzo típico.',
+            'Día 3: Viaje privado hacia Ipiales, visita guiada al Santuario de Las Lajas, teleférico y compras en frontera.',
+            'Día 4: Mañana libre para café nariñense, traslado privado al aeropuerto y vuelo de regreso LATAM.'
+          ]
+        }
+      },
+      aventura: {
+        id: 'aventura',
+        number: '2',
+        name: 'Paquete Aventura – Descubre Nariño',
+        badge: 'Más Vendido',
+        featured: false,
+        price: 1650000,
+        duration: '3 días / 2 noches',
+        minPax: 1,
+        flightCode: 'LA 4286',
+        cabin: 'ECONOMY PLUS',
+        idealFor: 'Perfecto para viajeros exploradores que buscan conocer la maravilla arquitectónica de Las Lajas.',
+        includes: [
+          'Vuelos ida y regreso con LATAM Airlines (BOG – PSO – BOG).',
+          'Hotel 3 estrellas con desayuno incluido.',
+          'Traslados aeropuerto – hotel – aeropuerto.',
+          'Una excursión guiada al Santuario de Las Lajas (Ipiales).',
+          'Seguro de viaje.',
+          'Equipaje de mano (10 kg).'
+        ],
+        excludes: [
+          'No incluye almuerzos, cenas ni otros recorridos turísticos.'
+        ],
+        fullDetails: {
+          destinos: 'San Juan de Pasto y Santuario de Nuestra Señora de Las Lajas (Cañón del río Guáitara, Ipiales).',
+          hospedaje: '2 noches en Hotel 3 estrellas confortable en el centro de Pasto (Hotel Palermo Suite o similar).',
+          alimentacion: '2 desayunos americanos o regionales incluidos en el hotel.',
+          transporte: 'Vuelos LATAM ida y regreso + van turística compartida para traslados aeropuerto-hotel y ruta a Ipiales.',
+          itinerario: [
+            'Día 1: Vuelo LATAM a Pasto, traslado al hotel 3★ y tarde libre para caminar por la ciudad.',
+            'Día 2: Salida temprana con guía hacia Ipiales para recorrer el Santuario de Las Lajas y sus miradores.',
+            'Día 3: Desayuno, traslado al aeropuerto Antonio Nariño y vuelo de retorno LATAM.'
+          ]
+        }
+      },
+      economico: {
+        id: 'economico',
+        number: '3',
+        name: 'Paquete Económico – Conoce Pasto',
+        badge: 'Tarifa Light',
+        featured: false,
+        price: 1150000,
+        duration: '3 días / 2 noches',
+        minPax: 1,
+        flightCode: 'LA 4286',
+        cabin: 'LIGHT ECONOMY',
+        idealFor: 'Diseñado para escapadas rápidas y presupuestos inteligentes.',
+        includes: [
+          'Vuelos ida y regreso con LATAM Airlines (BOG – PSO – BOG).',
+          'Hospedaje en hotel 3 estrellas (2 noches).',
+          'Desayunos incluidos.',
+          'Traslado de llegada (aeropuerto – hotel).',
+          'Recorrido guiado por el centro histórico de Pasto.',
+          'Equipaje de mano (10 kg).'
+        ],
+        excludes: [
+          'No incluye almuerzos, cenas, excursiones adicionales ni transporte durante el tiempo libre (ni traslado de salida).'
+        ],
+        fullDetails: {
+          destinos: 'Centro Histórico de San Juan de Pasto, Plaza de Nariño, Templo de San Juan Bautista y Museo del Carnaval.',
+          hospedaje: '2 noches en Hotel 3 estrellas céntrico con fácil acceso a restaurantes y comercio.',
+          alimentacion: '2 desayunos incluidos en el alojamiento.',
+          transporte: 'Vuelos LATAM ida y regreso + traslado únicamente de llegada desde el aeropuerto hasta el hotel.',
+          itinerario: [
+            'Día 1: Llegada en vuelo LATAM a Pasto y traslado incluido al hotel.',
+            'Día 2: Desayuno y recorrido peatonal guiado por el centro histórico, iglesias coloniales y talleres de barniz de Pasto.',
+            'Día 3: Desayuno, check-out y desplazamiento por cuenta del viajero hacia el aeropuerto para vuelo LATAM.'
+          ]
+        }
+      },
+      familiar: {
+        id: 'familiar',
+        number: '4',
+        name: 'Paquete Familiar – Nariño en Familia',
+        badge: 'Mín. 4 Viajeros',
+        featured: false,
+        price: 1850000,
+        duration: '4 días / 3 noches',
+        minPax: 4,
+        flightCode: 'LA 4286',
+        cabin: 'FAMILY ECONOMY',
+        idealFor: 'Tarifa especial para grupos familiares de 4 o más integrantes.',
+        includes: [
+          'Vuelos ida y regreso con LATAM Airlines (BOG – PSO – BOG).',
+          'Alojamiento en hotel familiar (habitaciones múltiples/conectadas).',
+          'Desayunos incluidos.',
+          'Traslados aeropuerto – hotel – aeropuerto.',
+          'Excursión familiar a la Laguna de La Cocha.',
+          'Actividad cultural familiar (taller artesanal o museo interactivo).',
+          'Seguro de viaje para toda la familia.',
+          'Equipaje de mano (10 kg).'
+        ],
+        excludes: [
+          'No incluye almuerzos, cenas ni gastos personales.'
+        ],
+        fullDetails: {
+          destinos: 'San Juan de Pasto, Laguna de La Cocha (El Encano) y Ruta Cultural Artesanal.',
+          hospedaje: '3 noches en hotel familiar con acomodación múltiple cómoda y zonas sociales.',
+          alimentacion: '3 desayunos familiares incluidos cada mañana.',
+          transporte: 'Vuelos LATAM para todo el grupo + transporte turístico para traslados aeropuerto-hotel y excursión a La Cocha.',
+          itinerario: [
+            'Día 1: Vuelo LATAM en grupo hacia Pasto y traslado al hotel familiar.',
+            'Día 2: Excursión a la Laguna de La Cocha con paseo panorámico en embarcación segura para niños y adultos.',
+            'Día 3: Actividad cultural familiar con maestros artesanos de Nariño y tarde de integración.',
+            'Día 4: Desayuno, traslado al aeropuerto y vuelo LATAM de regreso.'
+          ]
+        }
+      }
+    };
+
+    // ESTADO DE LA APLICACIÓN
+    let passengers = [
+      { name: '', cedula: '' }
+    ];
+    let salesHistory = JSON.parse(localStorage.getItem('vsl_latam_history') || '[]');
+
+    // FORMATEADOR DE MONEDA COP
+    function formatCOP(value) {
+      return new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+
+    // CAMBIO DE PESTAÑAS
+    function switchTab(tabId, btnEl) {
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('view-' + tabId).classList.add('active');
+      if (btnEl) btnEl.classList.add('active');
+    }
+
+    // RENDERIZAR CATÁLOGO
+    function renderCatalog() {
+      const container = document.getElementById('packages-container');
+      container.innerHTML = Object.values(PACKAGES).map(pkg => `
+        <article class="pkg-card ${pkg.featured ? 'featured' : ''}">
+          ${pkg.badge ? `<span class="pkg-ribbon">${pkg.badge}</span>` : ''}
+          <div class="pkg-header">
+            <div class="pkg-tag">Paquete #${pkg.number} · LATAM Partner</div>
+            <h3>${pkg.name}</h3>
+            <div class="pkg-price">${formatCOP(pkg.price)}</div>
+            <div class="pkg-sub">Por persona · ${pkg.duration} ${pkg.minPax > 1 ? '· Mínimo ' + pkg.minPax + ' viajeros' : ''}</div>
+          </div>
+          <div class="pkg-body">
+            <ul class="pkg-list">
+              ${pkg.includes.map(item => `<li class="inc">${item}</li>`).join('')}
+              ${pkg.excludes.map(item => `<li class="exc">${item}</li>`).join('')}
+            </ul>
+            <div class="pkg-note">${pkg.idealFor}</div>
+            <div class="pkg-actions">
+              <button class="btn btn-outline" onclick="openPackageDetails('${pkg.id}')">🔍 Ver Todo</button>
+              <button class="btn btn-primary" onclick="selectPackageForSale('${pkg.id}')">🎫 Vender Plan</button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // ABRIR MODAL CON DETALLES COMPLETOS (DESTINOS, HOTEL, COMIDA, TRANSPORTE)
+    function openPackageDetails(pkgId) {
+      const pkg = PACKAGES[pkgId];
+      document.getElementById('modal-pkg-title').textContent = `${pkg.name} – Guía Completa para el Cliente`;
+      document.getElementById('modal-pkg-body').innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; background:#F8FAFC; padding:1rem; border-radius:12px; margin-bottom:1.2rem; border:1px solid var(--border-color);">
+          <div>
+            <span style="font-size:0.78rem; text-transform:uppercase; color:var(--latam-indigo); font-weight:800;">Inversión por viajero</span>
+            <div style="font-size:1.75rem; font-weight:800; color:var(--latam-coral); font-family:'JetBrains Mono',monospace;">${formatCOP(pkg.price)}</div>
+            <span style="font-size:0.85rem; color:var(--text-muted);">${pkg.duration} · Vuelo ${pkg.flightCode}</span>
+          </div>
+          <button class="btn btn-primary" onclick="closeModal('package-modal'); selectPackageForSale('${pkg.id}')">
+            🎫 Pasar a Simulador de Venta
+          </button>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.2rem;">
+          <div style="background:#EEF2FF; padding:1rem; border-radius:12px;">
+            <h4 style="color:var(--latam-indigo); margin-bottom:0.35rem;">📍 Destinos a Visitar</h4>
+            <p style="font-size:0.88rem;">${pkg.fullDetails.destinos}</p>
+          </div>
+          <div style="background:#EEF2FF; padding:1rem; border-radius:12px;">
+            <h4 style="color:var(--latam-indigo); margin-bottom:0.35rem;">🏨 Lugar donde se van a quedar</h4>
+            <p style="font-size:0.88rem;">${pkg.fullDetails.hospedaje}</p>
+          </div>
+          <div style="background:#EEF2FF; padding:1rem; border-radius:12px;">
+            <h4 style="color:var(--latam-indigo); margin-bottom:0.35rem;">🍽️ Alimentación y Comidas</h4>
+            <p style="font-size:0.88rem;">${pkg.fullDetails.alimentacion}</p>
+          </div>
+          <div style="background:#EEF2FF; padding:1rem; border-radius:12px;">
+            <h4 style="color:var(--latam-indigo); margin-bottom:0.35rem;">🚐 Transporte y Vuelos LATAM</h4>
+            <p style="font-size:0.88rem;">${pkg.fullDetails.transporte}</p>
+          </div>
+        </div>
+
+        <h4 style="color:var(--latam-indigo); margin-bottom:0.6rem;">🗓️ Itinerario Día por Día</h4>
+        <ul style="padding-left:1.2rem; margin-bottom:1.2rem; font-size:0.9rem;">
+          ${pkg.fullDetails.itinerario.map(day => `<li style="margin-bottom:0.4rem;">${day}</li>`).join('')}
+        </ul>
+
+        <div style="background:#FFF1F2; border:1px solid #FECDD3; padding:0.9rem; border-radius:10px; font-size:0.86rem;">
+          <strong>🎁 Argumento de Cierre:</strong> Después de mostrarle todos los costos reales al cliente, invítalo a entrar a tu enlace promocional. Si confirma que viaja <b>justo ahora</b>, el valor de <b>${formatCOP(pkg.price)}</b> por persona queda en <b>$0 (GRATIS)</b>.
+        </div>
+      `;
+      document.getElementById('package-modal').classList.add('open');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    // SELECCIONAR PAQUETE DESDE EL CATÁLOGO
+    function selectPackageForSale(pkgId) {
+      document.getElementById('package-select').value = pkgId;
+      const pkg = PACKAGES[pkgId];
+      while (passengers.length < pkg.minPax) {
+        passengers.push({ name: '', cedula: '' });
+      }
+      renderPassengers();
+      updateSimulatorSummary();
+      const simBtn = document.querySelectorAll('.nav-btn')[1];
+      switchTab('simulador', simBtn);
+    }
+
+    // GESTIÓN DE PASAJEROS
+    function renderPassengers() {
+      const container = document.getElementById('passengers-list');
+      document.getElementById('pax-count').textContent = passengers.length;
+
+      container.innerHTML = passengers.map((pax, idx) => `
+        <div class="passenger-row">
+          <input type="text" placeholder="Nombre completo viajero #${idx + 1}" value="${pax.name}"
+            oninput="updatePassenger(${idx}, 'name', this.value)" />
+          <input type="text" placeholder="Cédula / Documento" value="${pax.cedula}"
+            oninput="updatePassenger(${idx}, 'cedula', this.value)" />
+          ${passengers.length > 1
+            ? `<button type="button" class="btn-remove" title="Quitar" onclick="removePassengerRow(${idx})">✕</button>`
+            : `<span style="width:36px;"></span>`}
+        </div>
+      `).join('');
+    }
+
+    function addPassengerRow() {
+      passengers.push({ name: '', cedula: '' });
+      renderPassengers();
+      updateSimulatorSummary();
+    }
+
+    function removePassengerRow(index) {
+      if (passengers.length <= 1) return;
+      passengers.splice(index, 1);
+      renderPassengers();
+      updateSimulatorSummary();
+    }
+
+    function updatePassenger(index, field, value) {
+      passengers[index][field] = value;
+    }
+
+    // CARGAR CLIENTES DE EJEMPLO PARA SIMULACIÓN RÁPIDA
+    function loadDemoClients() {
+      const pkgId = document.getElementById('package-select').value;
+      const samplePool = [
+        { name: 'Laura Valentina Gómez', cedula: '1.018.492.310' },
+        { name: 'Andrés Felipe Martínez', cedula: '1.032.441.889' },
+        { name: 'Sofía Camila Herrera', cedula: '1.000.782.114' },
+        { name: 'Mateo Sebastián Torres', cedula: '1.022.905.612' }
+      ];
+      const count = pkgId === 'familiar' ? 4 : 2;
+      passengers = samplePool.slice(0, count).map(p => ({ ...p }));
+      renderPassengers();
+      updateSimulatorSummary();
+    }
+
+    // COPIAR LINK PROMOCIONAL
+    function copyPromoLink() {
+      const input = document.getElementById('custom-promo-link');
+      input.select();
+      navigator.clipboard?.writeText(input.value);
+      alert('🔗 Enlace promocional copiado. Compártelo con el cliente para activar el viaje gratis inmediato.');
+    }
+
+    // ACTUALIZAR RESUMEN EN VIVO
+    function updateSimulatorSummary() {
+      const pkgId = document.getElementById('package-select').value;
+      const pkg = PACKAGES[pkgId];
+      const isFreePromo = document.getElementById('apply-free-promo').checked;
+      const qty = passengers.length;
+
+      // Validar mínimo 4 viajeros en Paquete Familiar
+      const warningEl = document.getElementById('family-warning');
+      if (pkg.minPax > 1 && qty < pkg.minPax) {
+        warningEl.style.display = 'block';
+      } else {
+        warningEl.style.display = 'none';
+      }
+
+      const regularTotal = pkg.price * qty;
+      const finalTotal = isFreePromo ? 0 : regularTotal;
+
+      document.getElementById('live-package-details').innerHTML = `
+        <div style="background:#EEF2FF; padding:0.9rem; border-radius:12px; margin-bottom:1rem;">
+          <div style="font-size:0.75rem; font-weight:800; color:var(--latam-indigo); text-transform:uppercase;">Plan Seleccionado · Vuelo ${pkg.flightCode}</div>
+          <div style="font-size:1.1rem; font-weight:800;">${pkg.name}</div>
+          <div style="font-size:0.84rem; color:var(--text-muted);">${pkg.duration} · Cabina ${pkg.cabin}</div>
+        </div>
+
+        <ul class="breakdown-list">
+          <li><span><strong>📍 Destinos:</strong></span><span style="text-align:right; max-width:62%;">${pkg.fullDetails.destinos}</span></li>
+          <li><span><strong>🏨 Hospedaje:</strong></span><span style="text-align:right; max-width:62%;">${pkg.fullDetails.hospedaje}</span></li>
+          <li><span><strong>🍽️ Comidas:</strong></span><span style="text-align:right; max-width:62%;">${pkg.fullDetails.alimentacion}</span></li>
+          <li><span><strong>🚐 Transporte:</strong></span><span style="text-align:right; max-width:62%;">${pkg.fullDetails.transporte}</span></li>
+          <li><span><strong>💵 Tarifa Unitaria:</strong></span><span>${formatCOP(pkg.price)} x ${qty} viajero(s)</span></li>
+        </ul>
+      `;
+
+      const totalDisplay = document.getElementById('total-price-display');
+      const promoNote = document.getElementById('promo-status-note');
+
+      if (isFreePromo) {
+        totalDisplay.innerHTML = `
+          <span>Total a Pagar Hoy:</span>
+          <div>
+            <span class="strike-price">${formatCOP(regularTotal)}</span>
+            <span class="total-free">$0 (GRATIS)</span>
+          </div>
+        `;
+        promoNote.textContent = '✅ ¡Promoción activada! Cliente ingresó al enlace y viaja justo ahora con 100% de subsidio.';
+      } else {
+        totalDisplay.innerHTML = `
+          <span>Total del Paquete:</span>
+          <span>${formatCOP(regularTotal)}</span>
+        `;
+        promoNote.textContent = '';
+      }
+    }
+
+    // GENERAR CÓDIGO DE RESERVA (PNR)
+    function generatePNR() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let code = 'LA';
+      for (let i = 0; i < 4; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return code;
+    }
+
+    // CERRAR VENTA Y EMITIR BOARDING PASS
+    function generateSaleAndTicket() {
+      const pkgId = document.getElementById('package-select').value;
+      const pkg = PACKAGES[pkgId];
+      const advisor = document.getElementById('advisor-name').value.trim() || 'Asesor Vuela Sin Límites';
+      const flightDate = document.getElementById('flight-date').value || new Date().toISOString().split('T')[0];
+      const isFreePromo = document.getElementById('apply-free-promo').checked;
+      const promoLink = document.getElementById('custom-promo-link').value.trim();
+
+      if (pkg.minPax > 1 && passengers.length < pkg.minPax) {
+        alert(`⚠️ El "${pkg.name}" exige mínimo ${pkg.minPax} viajeros. Agrega los pasajeros faltantes.`);
+        return;
+      }
+
+      for (let i = 0; i < passengers.length; i++) {
+        if (!passengers[i].name.trim() || !passengers[i].cedula.trim()) {
+          alert(`⚠️ Por favor completa el nombre y la cédula del viajero #${i + 1}.`);
+          return;
+        }
+      }
+
+      // Asignar asientos consecutivos estilo avión
+      const seatRow = Math.floor(Math.random() * 18) + 4;
+      const seatLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
+      const assignedPassengers = passengers.map((p, idx) => ({
+        name: p.name.trim().toUpperCase(),
+        cedula: p.cedula.trim(),
+        seat: `${seatRow + Math.floor(idx / 6)}${seatLetters[idx % 6]}`
+      }));
+
+      const regularTotal = pkg.price * assignedPassengers.length;
+      const saleRecord = {
+        id: Date.now(),
+        pnr: generatePNR(),
+        createdAt: new Date().toLocaleString('es-CO'),
+        advisor,
+        flightDate,
+        packageId: pkg.id,
+        packageName: pkg.name,
+        duration: pkg.duration,
+        flightCode: pkg.flightCode,
+        cabin: pkg.cabin,
+        passengers: assignedPassengers,
+        regularTotal,
+        finalTotal: isFreePromo ? 0 : regularTotal,
+        isFreePromo,
+        promoLink,
+        includes: pkg.includes
+      };
+
+      salesHistory.unshift(saleRecord);
+      localStorage.setItem('vsl_latam_history', JSON.stringify(salesHistory));
+      renderHistory();
+      openTicketModal(saleRecord);
+    }
+
+    // RENDERIZAR BOARDING PASS EN MODAL
+    function openTicketModal(sale) {
+      const area = document.getElementById('printable-ticket-area');
+      area.innerHTML = `
+        <div class="boarding-pass">
+          <div class="bp-top">
+            <div>
+              <div class="bp-airline">✈️ VUELA SIN LÍMITES TRAVEL × LATAM AIRLINES</div>
+              <div style="font-size:0.75rem; color:#C7D2FE;">PASSENGER ITINERARY & ELECTRONIC BOARDING PASS</div>
+            </div>
+            <div class="bp-class">${sale.cabin}</div>
+          </div>
+
+          <div class="bp-body">
+            <div class="bp-route">
+              <div class="bp-city">
+                <h3>BOG</h3>
+                <span>BOGOTÁ · EL DORADO</span>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-size:1.35rem; color:var(--latam-coral);">✈️ ➔ ➔ ➔</div>
+                <div style="font-size:0.78rem; font-weight:700; color:var(--latam-indigo);">VUELO ${sale.flightCode}</div>
+                <div style="font-size:0.72rem; color:var(--text-muted);">EQUIPAJE MANO 10 KG</div>
+              </div>
+              <div class="bp-city" style="text-align:right;">
+                <h3>PSO</h3>
+                <span>PASTO · ANTONIO NARIÑO</span>
+              </div>
+            </div>
+
+            <div class="bp-grid">
+              <div class="bp-field">
+                <label>Código Reserva (PNR)</label>
+                <span style="font-family:'JetBrains Mono',monospace; color:var(--latam-coral); font-size:1.05rem;">${sale.pnr}</span>
+              </div>
+              <div class="bp-field">
+                <label>Fecha de Salida</label>
+                <span>${sale.flightDate} · 08:30 AM</span>
+              </div>
+              <div class="bp-field">
+                <label>Puerta / Embarque</label>
+                <span>GATE B12 · 07:45 AM</span>
+              </div>
+              <div class="bp-field">
+                <label>Paquete Adquirido</label>
+                <span>${sale.packageName}</span>
+              </div>
+              <div class="bp-field">
+                <label>Duración del Plan</label>
+                <span>${sale.duration}</span>
+              </div>
+              <div class="bp-field">
+                <label>Asesor Agencia</label>
+                <span>${sale.advisor}</span>
+              </div>
+            </div>
+
+            <table class="bp-pax-table">
+              <thead>
+                <tr>
+                  <th>Pasajero</th>
+                  <th>Cédula / ID</th>
+                  <th>Asiento</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${sale.passengers.map(p => `
+                  <tr>
+                    <td><strong>${p.name}</strong></td>
+                    <td style="font-family:'JetBrains Mono',monospace;">${p.cedula}</td>
+                    <td><strong>${p.seat}</strong></td>
+                    <td style="color:var(--success); font-weight:700;">CONFIRMADO</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+
+            <div style="background:#F8FAFC; padding:0.85rem; border-radius:10px; margin-bottom:1rem; font-size:0.82rem;">
+              <strong>Servicios Incluidos en Destino:</strong> ${sale.includes.join(' ')}
+            </div>
+
+            <div class="bp-tear">
+              <div>
+                <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Liquidación Final</div>
+                ${sale.isFreePromo
+                  ? `<div style="font-size:1.15rem; font-weight:800; color:var(--success);">
+                       <span style="text-decoration:line-through; color:#94A3B8; font-size:0.85rem;">${formatCOP(sale.regularTotal)}</span>
+                       $0 COP (100% GRATIS · PROMO VIAJE INMEDIATO)
+                     </div>
+                     <div style="font-size:0.72rem; color:var(--text-muted);">Validado vía: ${sale.promoLink}</div>`
+                  : `<div style="font-size:1.15rem; font-weight:800; color:var(--latam-indigo);">${formatCOP(sale.finalTotal)} COP (PAGADO)</div>`
+                }
+                <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Emitido: ${sale.createdAt}</div>
+              </div>
+              <div>
+                <div class="barcode"></div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; text-align:center; margin-top:3px;">${sale.pnr}-BOGPSO-${sale.passengers.length}PAX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('ticket-modal').classList.add('open');
+    }
+
+    // RENDERIZAR HISTORIAL PERSISTENTE
+    function renderHistory() {
+      const container = document.getElementById('history-container');
+      document.getElementById('history-counter').textContent = salesHistory.length;
+
+      if (salesHistory.length === 0) {
+        container.innerHTML = `
+          <div class="panel" style="grid-column:1/-1; text-align:center; padding:3rem 1rem;">
+            <div style="font-size:2.5rem; margin-bottom:0.5rem;">🛫</div>
+            <h3 style="color:var(--latam-indigo); margin-bottom:0.4rem;">Aún no hay Boarding Pass emitidos</h3>
+            <p style="color:var(--text-muted); margin-bottom:1.2rem;">Realiza una simulación de cierre de venta para que quede guardada aquí.</p>
+            <button class="btn btn-primary" onclick="switchTab('simulador', document.querySelectorAll('.nav-btn')[1])">Ir al Simulador de Venta</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = salesHistory.map((sale, idx) => `
+        <div class="history-card">
+          <div>
+            <div class="history-top">
+              <span class="pnr-badge">PNR: ${sale.pnr}</span>
+              ${sale.isFreePromo ? `<span class="free-tag">🎁 VIAJE GRATIS $0</span>` : `<span style="font-weight:800; color:var(--latam-indigo);">${formatCOP(sale.finalTotal)}</span>`}
+            </div>
+            <h4 style="margin:0.75rem 0 0.25rem; color:var(--text-main);">${sale.packageName}</h4>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.65rem;">
+              Vuelo ${sale.flightCode} · Salida: ${sale.flightDate} · Asesor: <b>${sale.advisor}</b>
+            </div>
+            <div style="background:#F8FAFC; padding:0.6rem 0.75rem; border-radius:8px; font-size:0.82rem;">
+              <strong>Viajeros (${sale.passengers.length}):</strong>
+              <ul style="padding-left:1.1rem; margin-top:4px;">
+                ${sale.passengers.map(p => `<li>${p.name} (CC: ${p.cedula}) – Asiento <b>${p.seat}</b></li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-indigo" style="flex:1;" onclick="reopenTicket(${idx})">🎫 Ver e Imprimir Ticket</button>
+            <button class="btn btn-outline" style="padding:0.6rem 0.8rem;" title="Eliminar" onclick="deleteHistoryItem(${idx})">🗑️</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function reopenTicket(index) {
+      openTicketModal(salesHistory[index]);
+    }
+
+    function deleteHistoryItem(index) {
+      salesHistory.splice(index, 1);
+      localStorage.setItem('vsl_latam_history', JSON.stringify(salesHistory));
+      renderHistory();
+    }
+
+    function clearHistory() {
+      if (!salesHistory.length) return;
+      if (confirm('¿Deseas borrar todo el historial de Boarding Pass guardados?')) {
+        salesHistory = [];
+        localStorage.removeItem('vsl_latam_history');
+        renderHistory();
+      }
+    }
+
+    // INICIALIZACIÓN
+    document.getElementById('flight-date').value = new Date().toISOString().split('T')[0];
+    renderCatalog();
+    renderPassengers();
+    updateSimulatorSummary();
+    renderHistory();
+  </script>
+</body>
+</html>
