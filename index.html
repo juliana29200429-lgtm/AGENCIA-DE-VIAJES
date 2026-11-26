@@ -21,7 +21,6 @@
       --text-muted: #5A5D72;
       --border-color: #E0E3EE;
       --success: #0D9488;
-      --gold: #D97706;
     }
 
     * {
@@ -102,21 +101,22 @@
 
     .nav-tabs {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.45rem;
       background: rgba(0, 0, 0, 0.22);
       padding: 5px;
       border-radius: 12px;
+      flex-wrap: wrap;
     }
 
     .nav-btn {
       background: transparent;
       border: none;
       color: #E0E7FF;
-      padding: 0.6rem 1.1rem;
+      padding: 0.58rem 0.95rem;
       border-radius: 9px;
       font-family: inherit;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
@@ -149,7 +149,7 @@
       background: var(--latam-indigo-dark);
       color: white;
       border-bottom: 4px solid var(--latam-coral);
-      padding: 1.75rem 2rem;
+      padding: 1.6rem 2rem;
     }
 
     .flight-banner-inner {
@@ -269,6 +269,51 @@
     .section-header p {
       color: var(--text-muted);
       font-size: 0.95rem;
+    }
+
+    /* BUTTONS */
+    .btn {
+      padding: 0.72rem 1rem;
+      border-radius: 10px;
+      border: none;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--latam-indigo);
+      color: var(--latam-indigo);
+    }
+
+    .btn-outline:hover {
+      background: #EEF2FF;
+    }
+
+    .btn-primary {
+      background: var(--latam-coral);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--latam-coral-hover);
+    }
+
+    .btn-indigo {
+      background: var(--latam-indigo);
+      color: white;
+    }
+
+    .btn-indigo:hover {
+      background: var(--latam-indigo-dark);
     }
 
     /* PACKAGES GRID */
@@ -398,48 +443,141 @@
       gap: 0.6rem;
     }
 
-    .btn {
-      padding: 0.72rem 1rem;
-      border-radius: 10px;
-      border: none;
-      font-family: inherit;
-      font-weight: 700;
-      font-size: 0.88rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+    /* GALERÍA EXPERIENCIA NARIÑO */
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
     }
 
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--latam-indigo);
+    .filter-chip {
+      background: white;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-chip:hover {
+      border-color: var(--latam-indigo);
       color: var(--latam-indigo);
     }
 
-    .btn-outline:hover {
-      background: #EEF2FF;
-    }
-
-    .btn-primary {
-      background: var(--latam-coral);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--latam-coral-hover);
-    }
-
-    .btn-indigo {
+    .filter-chip.active {
       background: var(--latam-indigo);
+      border-color: var(--latam-indigo);
       color: white;
+      box-shadow: 0 4px 12px rgba(27, 0, 136, 0.2);
     }
 
-    .btn-indigo:hover {
-      background: var(--latam-indigo-dark);
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-card {
+      background: white;
+      border-radius: 18px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(27, 0, 136, 0.12);
+    }
+
+    .gallery-img-wrap {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #E2E8F0;
+      cursor: pointer;
+    }
+
+    .gallery-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover .gallery-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .gallery-cat-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(16, 0, 84, 0.85);
+      backdrop-filter: blur(4px);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    .gallery-zoom-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.65);
+      color: white;
+      font-size: 0.74rem;
+      padding: 3px 9px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .gallery-content {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+    }
+
+    .gallery-content h3 {
+      font-size: 1.08rem;
+      color: var(--latam-indigo);
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+
+    .gallery-content p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .pkg-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 0.6rem;
+    }
+
+    .mini-pkg-pill {
+      background: #EEF2FF;
+      color: var(--latam-indigo);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
     }
 
     /* COMPARISON TABLE */
@@ -692,7 +830,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(16, 0, 84, 0.72);
+      background: rgba(16, 0, 84, 0.76);
       backdrop-filter: blur(4px);
       display: none;
       place-items: center;
@@ -940,12 +1078,13 @@
         <div class="brand-icon">✈️</div>
         <div class="brand-title">
           <h1>Vuela Sin Límites Travel</h1>
-          <span>Operado con <span class="latam-badge">LATAM AIRLINES</span> • 1AN •</span>
+          <span>Operado con <span class="latam-badge">LATAM AIRLINES</span> • 1AN • </span>
         </div>
       </div>
 
       <nav class="nav-tabs">
         <button class="nav-btn active" onclick="switchTab('catalogo', this)">🌍 Catálogo Nariño</button>
+        <button class="nav-btn" onclick="switchTab('galeria', this)">📸 Galería y Hoteles</button>
         <button class="nav-btn" onclick="switchTab('simulador', this)">🎫 Simulador y Cierre</button>
         <button class="nav-btn" onclick="switchTab('historial', this)">
           📋 Historial Boarding Pass <span class="badge-count" id="history-counter">0</span>
@@ -963,7 +1102,7 @@
         </div>
         <div class="flight-path">
           <div class="flight-line">✈️</div>
-          <div class="flight-meta">Vuelo LA 4286</div>
+          <div class="flight-meta">Vuelo Directo LA 4286</div>
         </div>
         <div class="iata-box">
           <div class="iata-code">PSO</div>
@@ -989,15 +1128,33 @@
       </div>
 
       <div class="packages-grid" id="packages-container"></div>
-
-      
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: SIMULADOR MULTI-CLIENTE Y CIERRE DE VENTA -->
+    <!-- SECCIÓN 2: GALERÍA VISUAL (DESTINOS, HOTELES, COMIDA Y VUELOS) -->
+    <section id="view-galeria" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2>📸 Experiencia Visual: Destinos, Hoteles, Comida y Vuelos</h2>
+          <p>Muestra al cliente exactamente dónde se va a hospedar, los lugares icónicos de Nariño, la gastronomía y su vuelo LATAM.</p>
+        </div>
+      </div>
+
+      <div class="gallery-filters" id="gallery-filters">
+        <button class="filter-chip active" onclick="filterGallery('todos', this)">✨ Todo el Viaje</button>
+        <button class="filter-chip" onclick="filterGallery('destinos', this)">🏔️ Lugares Turísticos</button>
+        <button class="filter-chip" onclick="filterGallery('hoteles', this)">🏨 Hoteles y Alojamiento</button>
+        <button class="filter-chip" onclick="filterGallery('comida', this)">🍽️ Comida y Gastronomía</button>
+        <button class="filter-chip" onclick="filterGallery('transporte', this)">✈️ Vuelos LATAM y Transporte</button>
+      </div>
+
+      <div class="gallery-grid" id="gallery-container"></div>
+    </section>
+
+    <!-- SECCIÓN 3: SIMULADOR MULTI-CLIENTE Y CIERRE DE VENTA -->
     <section id="view-simulador" class="view-section">
       <div class="section-header">
         <div>
@@ -1016,7 +1173,7 @@
           <div class="form-grid">
             <div class="form-group">
               <label for="advisor-name">Asesor de la Agencia</label>
-              <input type="text" id="advisor-name" placeholder="Ej: - / Carlos Ruiz" value="-" />
+              <input type="text" id="advisor-name" placeholder="Ej: - / -" value="-" />
             </div>
 
             <div class="form-group">
@@ -1052,7 +1209,7 @@
             <h4>🔗 Enlace Exclusivo: ¡Viaja Justo Ahora 100% GRATIS!</h4>
             <p>Si el cliente entra a tu enlace oficial y confirma que está dispuesto a tomar el vuelo de inmediato, todo el plan turístico seleccionado queda totalmente gratis.</p>
             <div class="promo-link-row">
-              <input type="text" id="custom-promo-link" class="promo-link-input" value="https://juliana29200429-lgtm.github.io/PREMIO/" />
+              <input type="text" id="custom-promo-link" class="promo-link-input" value="https://vuelasinlimites.latam-promo.co/narino-vip-free" />
               <button type="button" class="btn btn-primary" style="padding:0.55rem 0.9rem; font-size:0.8rem;" onclick="copyPromoLink()">📋 Copiar Link</button>
             </div>
             <label class="promo-toggle">
@@ -1083,7 +1240,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: HISTORIAL DE VENTAS Y BOARDING PASS -->
+    <!-- SECCIÓN 4: HISTORIAL DE VENTAS Y BOARDING PASS -->
     <section id="view-historial" class="view-section">
       <div class="section-header">
         <div>
@@ -1097,7 +1254,7 @@
     </section>
   </main>
 
-  <!-- MODAL DETALLE DE PAQUETE (DESTINOS, HOTEL, COMIDA, TRANSPORTE) -->
+  <!-- MODAL DETALLE DE PAQUETE -->
   <div class="modal-backdrop" id="package-modal">
     <div class="modal-card">
       <div class="modal-head">
@@ -1105,6 +1262,17 @@
         <button class="close-modal" onclick="closeModal('package-modal')">✕</button>
       </div>
       <div class="modal-body" id="modal-pkg-body"></div>
+    </div>
+  </div>
+
+  <!-- MODAL LIGHTBOX FOTO AMPLIADA -->
+  <div class="modal-backdrop" id="photo-modal">
+    <div class="modal-card" style="max-width: 820px;">
+      <div class="modal-head">
+        <h3 id="photo-modal-title">Vista Previa del Destino</h3>
+        <button class="close-modal" onclick="closeModal('photo-modal')">✕</button>
+      </div>
+      <div class="modal-body" id="photo-modal-body"></div>
     </div>
   </div>
 
@@ -1137,7 +1305,7 @@
         price: 2450000,
         duration: '4 días / 3 noches',
         minPax: 1,
-        flightCode: 'LA 4286',
+        flightCode: 'LA 4120',
         cabin: 'PREMIUM ECONOMY',
         idealFor: 'Ideal para quienes quieren despreocuparse de toda la organización.',
         includes: [
@@ -1175,7 +1343,7 @@
         price: 1650000,
         duration: '3 días / 2 noches',
         minPax: 1,
-        flightCode: 'LA 4286',
+        flightCode: 'LA 4124',
         cabin: 'ECONOMY PLUS',
         idealFor: 'Perfecto para viajeros exploradores que buscan conocer la maravilla arquitectónica de Las Lajas.',
         includes: [
@@ -1210,7 +1378,7 @@
         price: 1150000,
         duration: '3 días / 2 noches',
         minPax: 1,
-        flightCode: 'LA 4286',
+        flightCode: 'LA 4128',
         cabin: 'LIGHT ECONOMY',
         idealFor: 'Diseñado para escapadas rápidas y presupuestos inteligentes.',
         includes: [
@@ -1245,7 +1413,7 @@
         price: 1850000,
         duration: '4 días / 3 noches',
         minPax: 4,
-        flightCode: 'LA 4286',
+        flightCode: 'LA 4132',
         cabin: 'FAMILY ECONOMY',
         idealFor: 'Tarifa especial para grupos familiares de 4 o más integrantes.',
         includes: [
@@ -1275,6 +1443,110 @@
         }
       }
     };
+
+    // GALERÍA DE IMÁGENES DE NARIÑO (DESTINOS, HOTELES, COMIDA, TRANSPORTE)
+    const GALLERY_ITEMS = [
+      {
+        id: 'g1',
+        category: 'destinos',
+        catLabel: '🏔️ Lugar Turístico',
+        title: 'Santuario Nacional de Las Lajas (Ipiales)',
+        desc: 'Majestuosa basílica de estilo neogótico construida sobre el cañón del río Guáitara. Incluye recorrido guiado y miradores panorámicos.',
+        image: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=900&q=80',
+        packages: ['premium', 'aventura'],
+        pkgNames: ['1. Premium VIP', '2. Aventura']
+      },
+      {
+        id: 'g2',
+        category: 'destinos',
+        catLabel: '🏔️ Lugar Turístico',
+        title: 'Laguna de La Cocha & Isla La Corota',
+        desc: 'El segundo cuerpo de agua natural más grande de Colombia. Paseo en lancha entre chalets suizos, santuario de flora y aire puro andino.',
+        image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80',
+        packages: ['premium', 'familiar'],
+        pkgNames: ['1. Premium VIP', '4. Familiar']
+      },
+      {
+        id: 'g3',
+        category: 'destinos',
+        catLabel: '🏔️ Lugar Turístico',
+        title: 'Centro Histórico de San Juan de Pasto',
+        desc: 'Recorrido arquitectónico y cultural por la Plaza de Nariño, templos coloniales, talleres de Barniz de Pasto y tradición carnavalera.',
+        image: 'https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=900&q=80',
+        packages: ['economico', 'familiar'],
+        pkgNames: ['3. Económico', '4. Familiar (Act. Cultural)']
+      },
+      {
+        id: 'g4',
+        category: 'hoteles',
+        catLabel: '🏨 Hotel 4 Estrellas VIP',
+        title: 'Hotel 4★ Superior en Pasto (Suite Ejecutiva)',
+        desc: 'Alojamiento de lujo con habitaciones amplias, calefacción, vista a las montañas nariñenses, spa y restaurante gourmet.',
+        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80',
+        packages: ['premium'],
+        pkgNames: ['1. Premium VIP (3 noches)']
+      },
+      {
+        id: 'g5',
+        category: 'hoteles',
+        catLabel: '🏨 Hotel 3 Estrellas',
+        title: 'Hotel 3★ Confortable en Zona Céntrica',
+        desc: 'Habitaciones acogedoras, baño privado con agua caliente, Wi-Fi de alta velocidad y ubicación estratégica en Pasto.',
+        image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=80',
+        packages: ['aventura', 'economico'],
+        pkgNames: ['2. Aventura (2 noches)', '3. Económico (2 noches)']
+      },
+      {
+        id: 'g6',
+        category: 'hoteles',
+        catLabel: '🏨 Alojamiento Familiar',
+        title: 'Hotel Familiar con Habitaciones Múltiples',
+        desc: 'Espacios diseñados para grupos de 4 o más viajeros con habitaciones conectadas, áreas sociales y ambiente cálido para niños y adultos.',
+        image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80',
+        packages: ['familiar'],
+        pkgNames: ['4. Familiar (3 noches)']
+      },
+      {
+        id: 'g7',
+        category: 'comida',
+        catLabel: '🍽️ Gastronomía Nariñense',
+        title: 'Trucha Arcoíris Fresca de La Cocha y Platos Típicos',
+        desc: 'Disfruta de la gastronomía tradicional de Nariño: trucha al ajillo o gratinada con patacones, locro nariñense y empanadas de añejo.',
+        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
+        packages: ['premium'],
+        pkgNames: ['1. Premium VIP (Desayuno, Almuerzo y Cena)']
+      },
+      {
+        id: 'g8',
+        category: 'comida',
+        catLabel: '🍽️ Desayunos Incluidos',
+        title: 'Desayuno Americano y Café Especial de Nariño',
+        desc: 'Comienza cada mañana con café de altura nariñense, frutas frescas, huevos al gusto, panadería artesanal y jugos naturales.',
+        image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80',
+        packages: ['premium', 'aventura', 'economico', 'familiar'],
+        pkgNames: ['Incluido en TODOS los paquetes']
+      },
+      {
+        id: 'g9',
+        category: 'transporte',
+        catLabel: '✈️ Vuelos LATAM Airlines',
+        title: 'Vuelos Directos Ida y Regreso (BOG ➔ PSO ➔ BOG)',
+        desc: 'Vuela cómodo y seguro con LATAM Airlines desde Bogotá hasta el Aeropuerto Antonio Nariño. Incluye equipaje de mano de 10 kg.',
+        image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80',
+        packages: ['premium', 'aventura', 'economico', 'familiar'],
+        pkgNames: ['Incluido en TODOS los paquetes']
+      },
+      {
+        id: 'g10',
+        category: 'transporte',
+        catLabel: '🚐 Transporte Terrestre',
+        title: 'Vehículos Privados y Vans Turísticas Climatizadas',
+        desc: 'Traslados seguros por las carreteras panorámicas de Nariño con conductores profesionales y póliza de seguro de viaje.',
+        image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80',
+        packages: ['premium', 'aventura', 'familiar'],
+        pkgNames: ['1. Premium (Privado)', '2. Aventura', '4. Familiar']
+      }
+    ];
 
     // ESTADO DE LA APLICACIÓN
     let passengers = [
@@ -1326,7 +1598,64 @@
       `).join('');
     }
 
-    // ABRIR MODAL CON DETALLES COMPLETOS (DESTINOS, HOTEL, COMIDA, TRANSPORTE)
+    // RENDERIZAR GALERÍA VISUAL
+    function renderGallery(filter = 'todos') {
+      const container = document.getElementById('gallery-container');
+      const filtered = filter === 'todos'
+        ? GALLERY_ITEMS
+        : GALLERY_ITEMS.filter(item => item.category === filter);
+
+      container.innerHTML = filtered.map(item => `
+        <article class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openPhotoLightbox('${item.id}')">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" />
+            <span class="gallery-cat-badge">${item.catLabel}</span>
+            <span class="gallery-zoom-hint">🔍 Ampliar foto</span>
+          </div>
+          <div class="gallery-content">
+            <div>
+              <h3>${item.title}</h3>
+              <p>${item.desc}</p>
+              <div class="pkg-pills-row">
+                ${item.pkgNames.map(name => `<span class="mini-pkg-pill">✓ ${name}</span>`).join('')}
+              </div>
+            </div>
+            <button class="btn btn-indigo" style="width:100%; font-size:0.82rem; padding:0.6rem;" onclick="selectPackageForSale('${item.packages[0]}')">
+              🎫 Cotizar Paquete con este Servicio
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterGallery(category, btnEl) {
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      renderGallery(category);
+    }
+
+    function openPhotoLightbox(itemId) {
+      const item = GALLERY_ITEMS.find(g => g.id === itemId);
+      if (!item) return;
+      document.getElementById('photo-modal-title').textContent = item.title;
+      document.getElementById('photo-modal-body').innerHTML = `
+        <img src="${item.image}" alt="${item.title}" style="width:100%; max-height:420px; object-fit:cover; border-radius:14px; margin-bottom:1rem;" />
+        <span style="background:#EEF2FF; color:var(--latam-indigo); font-weight:800; font-size:0.78rem; padding:4px 10px; border-radius:999px;">${item.catLabel}</span>
+        <p style="margin:0.85rem 0; font-size:0.95rem; color:var(--text-main);">${item.desc}</p>
+        <div style="background:#F8FAFC; padding:0.85rem; border-radius:10px; margin-bottom:1rem; font-size:0.85rem;">
+          <strong>Disponible en:</strong> ${item.pkgNames.join(' · ')}
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.6rem;">
+          <button class="btn btn-outline" onclick="closeModal('photo-modal')">Cerrar</button>
+          <button class="btn btn-primary" onclick="closeModal('photo-modal'); selectPackageForSale('${item.packages[0]}')">
+            🎫 Seleccionar este Paquete para el Cliente
+          </button>
+        </div>
+      `;
+      document.getElementById('photo-modal').classList.add('open');
+    }
+
+    // ABRIR MODAL CON DETALLES COMPLETOS
     function openPackageDetails(pkgId) {
       const pkg = PACKAGES[pkgId];
       document.getElementById('modal-pkg-title').textContent = `${pkg.name} – Guía Completa para el Cliente`;
@@ -1377,7 +1706,7 @@
       document.getElementById(id).classList.remove('open');
     }
 
-    // SELECCIONAR PAQUETE DESDE EL CATÁLOGO
+    // SELECCIONAR PAQUETE DESDE EL CATÁLOGO O GALERÍA
     function selectPackageForSale(pkgId) {
       document.getElementById('package-select').value = pkgId;
       const pkg = PACKAGES[pkgId];
@@ -1386,7 +1715,7 @@
       }
       renderPassengers();
       updateSimulatorSummary();
-      const simBtn = document.querySelectorAll('.nav-btn')[1];
+      const simBtn = document.querySelectorAll('.nav-btn')[2];
       switchTab('simulador', simBtn);
     }
 
@@ -1425,7 +1754,7 @@
       passengers[index][field] = value;
     }
 
-    // CARGAR CLIENTES DE EJEMPLO PARA SIMULACIÓN RÁPIDA
+    // CARGAR CLIENTES DE EJEMPLO
     function loadDemoClients() {
       const pkgId = document.getElementById('package-select').value;
       const samplePool = [
@@ -1455,7 +1784,6 @@
       const isFreePromo = document.getElementById('apply-free-promo').checked;
       const qty = passengers.length;
 
-      // Validar mínimo 4 viajeros en Paquete Familiar
       const warningEl = document.getElementById('family-warning');
       if (pkg.minPax > 1 && qty < pkg.minPax) {
         warningEl.style.display = 'block';
@@ -1464,7 +1792,6 @@
       }
 
       const regularTotal = pkg.price * qty;
-      const finalTotal = isFreePromo ? 0 : regularTotal;
 
       document.getElementById('live-package-details').innerHTML = `
         <div style="background:#EEF2FF; padding:0.9rem; border-radius:12px; margin-bottom:1rem;">
@@ -1534,7 +1861,6 @@
         }
       }
 
-      // Asignar asientos consecutivos estilo avión
       const seatRow = Math.floor(Math.random() * 18) + 4;
       const seatLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
       const assignedPassengers = passengers.map((p, idx) => ({
@@ -1686,7 +2012,7 @@
             <div style="font-size:2.5rem; margin-bottom:0.5rem;">🛫</div>
             <h3 style="color:var(--latam-indigo); margin-bottom:0.4rem;">Aún no hay Boarding Pass emitidos</h3>
             <p style="color:var(--text-muted); margin-bottom:1.2rem;">Realiza una simulación de cierre de venta para que quede guardada aquí.</p>
-            <button class="btn btn-primary" onclick="switchTab('simulador', document.querySelectorAll('.nav-btn')[1])">Ir al Simulador de Venta</button>
+            <button class="btn btn-primary" onclick="switchTab('simulador', document.querySelectorAll('.nav-btn')[2])">Ir al Simulador de Venta</button>
           </div>
         `;
         return;
@@ -1741,6 +2067,7 @@
     // INICIALIZACIÓN
     document.getElementById('flight-date').value = new Date().toISOString().split('T')[0];
     renderCatalog();
+    renderGallery();
     renderPassengers();
     updateSimulatorSummary();
     renderHistory();
